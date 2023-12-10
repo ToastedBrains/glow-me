@@ -15,11 +15,11 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is CharacterBody2D:
-		print(body)
+#		print(body)
 		var props = body.get_property_list()
 		for p in props:
 			print(p)
-		body.power_up = true
+		body.charging = true
 #	queue_free()
 #	body.power_up = true
 #	body.queue_free()
@@ -29,8 +29,8 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	if body is CharacterBody2D:
-		print(body)
+#		print(body)
 		var props = body.get_property_list()
 		for p in props:
 			print(p)
-		body.power_up = false
+		body.charging = false

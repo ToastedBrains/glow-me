@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8uwijdmfacbs"]
+[gd_scene load_steps=10 format=3 uid="uid://b8uwijdmfacbs"]
 
 [ext_resource type="PackedScene" uid="uid://cb0j6v8shsd03" path="res://Player/player.tscn" id="1_snwly"]
 [ext_resource type="PackedScene" uid="uid://cmwujakjog1t7" path="res://LightSources/light_source.tscn" id="2_m6ggs"]
+[ext_resource type="PackedScene" uid="uid://cxwblhx28wseb" path="res://Phosphorescents/phospho_cube.tscn" id="3_eckn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtrlt"]
 size = Vector2(64, 8)
@@ -29,12 +30,13 @@ offset_bottom = 480.0
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_snwly")]
+position = Vector2(24, 16)
 
 [node name="P64" type="ColorRect" parent="."]
-offset_left = 136.0
-offset_top = 64.0
-offset_right = 200.0
-offset_bottom = 72.0
+offset_left = 144.0
+offset_top = 96.0
+offset_right = 208.0
+offset_bottom = 104.0
 color = Color(1, 0.301961, 1, 1)
 metadata/_edit_group_ = true
 
@@ -60,10 +62,10 @@ shape = SubResource("RectangleShape2D_o41vk")
 occluder = SubResource("OccluderPolygon2D_4bmeh")
 
 [node name="P32sq" type="ColorRect" parent="."]
-offset_left = 184.0
-offset_top = 48.0
-offset_right = 200.0
-offset_bottom = 64.0
+offset_left = 192.0
+offset_top = 80.0
+offset_right = 208.0
+offset_bottom = 96.0
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="P32sq"]
@@ -200,3 +202,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="LightSource" parent="." instance=ExtResource("2_m6ggs")]
 position = Vector2(488, 280)
+
+[node name="PhosphoCube" parent="." instance=ExtResource("3_eckn1")]
+position = Vector2(113, 17)

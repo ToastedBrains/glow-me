@@ -1,77 +1,57 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var charging = false
 
-@onready var light_power = 2
-@onready var light_radius = 3
-@onready var power_up = false
+@export var speed = 300.0
+@export var jump_velocity = -400.0
+@export var energy = 2
+@export var radius = 2
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-func charge_up():
-	power_up = true
-
-func charge_down():
-	power_up = false
-
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
-	
-	if power_up:
-#		print("pw up", light_power, " ", $PointLight2D.texture_scale)
-		light_power = clamp(light_power + 0.01, 0.1, 2)
-		$PointLight2D.energy = light_power
+func set_energy():
+	if charging:
+		energy = clamp(energy + 0.01, 0.1, 2)
+		$PointLight2D.energy = energy
 		$PointLight2D.texture_scale = clamp($PointLight2D.texture_scale + $PointLight2D.texture_scale * 0.01, 0.5, 3)
 	else:
-#		print("pw down", light_power, " ",  $PointLight2D.texture_scale)
-		light_power = clamp(light_power - 0.001, 0.1, 2)
+		energy = clamp(energy - 0.001, 0.1, 2)
 		$PointLight2D.texture_scale = clamp($PointLight2D.texture_scale - $PointLight2D.texture_scale * 0.001, 0.5, 3)
-		$PointLight2D.energy = light_power
-#		$PointLight2D.texture_scale -= $PointLight2D.texture_scale * 0.001
+		$PointLight2D.energy = energy
 
+func charge_up():
+	charging = true
 
-#func _on_area_2d_body_entered(body):
-#	print("entered")
-#	if body.is_in_group("light_sources"):
-#		print("s-enter")
-#		power_up = true
-#
-#
-#func _on_area_2d_body_exited(body):
-#	print("exited")
-#	if body.is_in_group("light_sources"):
-#		print("s-exit")
-#		power_up = false
+func charge_down():
+	charging = false
+
+func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = jump_velocity
+	var direction = Input.get_axis("ui_left", "ui_right")
+	if direction:
+		velocity.x = direction * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
+	if move_and_slide():
+		for collisions in get_slide_collision_count():
+			var collision = get_slide_collision(collisions)
+			if collision.get_collider() is RigidBody2D:
+				collision.get_collider().apply_force(collision.get_normal() * -2500)
+	set_energy()
 
 
 func _on_area_2d_area_entered(area):
 	print("entered")
 	if area.is_in_group("light_sources"):
 		print("s-enter")
-		power_up = true
+		charging = true
 
 
 func _on_area_2d_area_exited(area):
 	print("exited")
 	if area.is_in_group("light_sources"):
 		print("s-exit")
-		power_up = false
+		charging = false

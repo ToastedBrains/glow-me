@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://t11l2j1r1tre"]
+
+[ext_resource type="Script" path="res://Phosphorescents/phosphorescence.gd" id="1_g7b88"]
+[ext_resource type="Texture2D" uid="uid://ci6xfolijtmdi" path="res://Phosphorescents/light_temp.png" id="2_47ikm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2xy7"]
+radius = 24.0
+
+[node name="Phosphorescence" type="Node2D" groups=["phosphorescents"]]
+script = ExtResource("1_g7b88")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-6.67572e-06, 1.90735e-06)
+scale = Vector2(0.4, 0.4)
+shadow_enabled = true
+texture = ExtResource("2_47ikm")
+
+[node name="Halo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Halo"]
+shape = SubResource("CircleShape2D_e2xy7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -64.0
+offset_right = 16.0
+offset_bottom = -41.0
+theme_override_font_sizes/font_size = 10
+
+[connection signal="body_entered" from="Halo" to="." method="_on_halo_body_entered"]
+[connection signal="body_exited" from="Halo" to="." method="_on_halo_body_exited"]

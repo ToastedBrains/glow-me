@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8uwijdmfacbs"]
+[gd_scene load_steps=20 format=3 uid="uid://b8uwijdmfacbs"]
 
 [ext_resource type="PackedScene" uid="uid://cb0j6v8shsd03" path="res://Player/player.tscn" id="1_snwly"]
-[ext_resource type="PackedScene" uid="uid://cmwujakjog1t7" path="res://LightSources/light_source.tscn" id="2_m6ggs"]
-[ext_resource type="PackedScene" uid="uid://cxwblhx28wseb" path="res://Phosphorescents/phospho_cube.tscn" id="3_eckn1"]
+[ext_resource type="PackedScene" uid="uid://cmwujakjog1t7" path="res://LightSources/light_source.tscn" id="3_ivwls"]
+[ext_resource type="PackedScene" uid="uid://c888flckfoxan" path="res://Phosphorescents/rigid_body_2d.tscn" id="4_4krsy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtrlt"]
 size = Vector2(64, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vwwji"]
+polygon = PackedVector2Array(64, 0, 64, 8, 0, 8, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o41vk"]
 size = Vector2(128, 8)
@@ -17,10 +20,37 @@ polygon = PackedVector2Array(0, 0, 128, 0, 128, 8, 0, 8)
 size = Vector2(16, 16)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lni8u"]
-polygon = PackedVector2Array(-48, 16, 16, 16, 16, 24, -48, 24)
+polygon = PackedVector2Array(0, 0, 16, 0, 16, 16, 0, 16)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f75hj"]
 polygon = PackedVector2Array(64, 0, 64, 8, 0, 8, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_akyra"]
+polygon = PackedVector2Array(128, 0, 128, 8, 0, 8, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8ll2d"]
+polygon = PackedVector2Array(16, 0, 16, 16, 0, 16, 0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mm7m3"]
+size = Vector2(720, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t7shn"]
+polygon = PackedVector2Array(352, -208, 352, -192, 336, -192, 336, -208)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mpdoy"]
+polygon = PackedVector2Array(128, 0, 128, 8, 0, 8, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uhlm1"]
+polygon = PackedVector2Array(16, 0, 16, 16, 0, 16, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yn1hv"]
+polygon = PackedVector2Array(16, 0, 16, 16, 0, 16, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q3jgb"]
+polygon = PackedVector2Array(16, 0, 16, 16, 0, 16, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8nkdp"]
+polygon = PackedVector2Array(16, 0, 16, 16, 0, 16, 0, 0)
 
 [node name="Level1" type="Node"]
 
@@ -30,13 +60,13 @@ offset_bottom = 480.0
 color = Color(0.164706, 0.164706, 0.164706, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_snwly")]
-position = Vector2(24, 16)
+position = Vector2(56, 32)
 
 [node name="P64" type="ColorRect" parent="."]
-offset_left = 144.0
-offset_top = 96.0
-offset_right = 208.0
-offset_bottom = 104.0
+offset_left = 128.0
+offset_top = 104.0
+offset_right = 192.0
+offset_bottom = 112.0
 color = Color(1, 0.301961, 1, 1)
 metadata/_edit_group_ = true
 
@@ -45,6 +75,9 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P64/StaticBody2D"]
 position = Vector2(32, 4)
 shape = SubResource("RectangleShape2D_vtrlt")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P64"]
+occluder = SubResource("OccluderPolygon2D_vwwji")
 
 [node name="P128" type="ColorRect" parent="."]
 offset_top = 56.0
@@ -62,10 +95,10 @@ shape = SubResource("RectangleShape2D_o41vk")
 occluder = SubResource("OccluderPolygon2D_4bmeh")
 
 [node name="P32sq" type="ColorRect" parent="."]
-offset_left = 192.0
-offset_top = 80.0
-offset_right = 208.0
-offset_bottom = 96.0
+offset_left = 240.0
+offset_top = 104.0
+offset_right = 256.0
+offset_bottom = 120.0
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="P32sq"]
@@ -94,9 +127,9 @@ shape = SubResource("RectangleShape2D_vtrlt")
 occluder = SubResource("OccluderPolygon2D_f75hj")
 
 [node name="P129" type="ColorRect" parent="."]
-offset_left = 176.0
+offset_left = 192.0
 offset_top = 168.0
-offset_right = 304.0
+offset_right = 320.0
 offset_bottom = 176.0
 metadata/_edit_group_ = true
 
@@ -106,11 +139,14 @@ metadata/_edit_group_ = true
 position = Vector2(64, 4)
 shape = SubResource("RectangleShape2D_o41vk")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P129"]
+occluder = SubResource("OccluderPolygon2D_akyra")
+
 [node name="P32sq2" type="ColorRect" parent="."]
 offset_left = 336.0
-offset_top = 200.0
+offset_top = 192.0
 offset_right = 352.0
-offset_bottom = 216.0
+offset_bottom = 208.0
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="P32sq2"]
@@ -119,24 +155,61 @@ metadata/_edit_group_ = true
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_fpt11")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P32sq2"]
+occluder = SubResource("OccluderPolygon2D_8ll2d")
+
 [node name="P66" type="ColorRect" parent="."]
-offset_left = 304.0
-offset_top = 336.0
-offset_right = 368.0
-offset_bottom = 344.0
+offset_top = 440.0
+offset_right = 720.0
+offset_bottom = 448.0
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="P66"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P66/StaticBody2D"]
-position = Vector2(32, 4)
-shape = SubResource("RectangleShape2D_vtrlt")
+position = Vector2(360, 4)
+shape = SubResource("RectangleShape2D_mm7m3")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P66"]
+occluder = SubResource("OccluderPolygon2D_t7shn")
+
+[node name="P67" type="ColorRect" parent="."]
+offset_left = 720.0
+offset_right = 1440.0
+offset_bottom = 8.0
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="P67"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P67/StaticBody2D"]
+position = Vector2(360, 4)
+shape = SubResource("RectangleShape2D_mm7m3")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P67"]
+occluder = SubResource("OccluderPolygon2D_t7shn")
+
+[node name="P68" type="ColorRect" parent="."]
+offset_left = 8.0
+offset_right = 728.0
+offset_bottom = 8.0
+rotation = 1.5708
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="P68"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P68/StaticBody2D"]
+position = Vector2(360, 4)
+shape = SubResource("RectangleShape2D_mm7m3")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P68"]
+occluder = SubResource("OccluderPolygon2D_t7shn")
 
 [node name="P130" type="ColorRect" parent="."]
-offset_left = 384.0
-offset_top = 288.0
-offset_right = 512.0
-offset_bottom = 296.0
+offset_left = 424.0
+offset_top = 312.0
+offset_right = 552.0
+offset_bottom = 320.0
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="P130"]
@@ -145,11 +218,14 @@ metadata/_edit_group_ = true
 position = Vector2(64, 4)
 shape = SubResource("RectangleShape2D_o41vk")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P130"]
+occluder = SubResource("OccluderPolygon2D_mpdoy")
+
 [node name="P32sq3" type="ColorRect" parent="."]
-offset_left = 384.0
-offset_top = 272.0
-offset_right = 400.0
-offset_bottom = 288.0
+offset_left = 608.0
+offset_top = 392.0
+offset_right = 624.0
+offset_bottom = 408.0
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="P32sq3"]
@@ -158,10 +234,13 @@ metadata/_edit_group_ = true
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_fpt11")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P32sq3"]
+occluder = SubResource("OccluderPolygon2D_uhlm1")
+
 [node name="P32sq4" type="ColorRect" parent="."]
-offset_left = 400.0
+offset_left = 368.0
 offset_top = 232.0
-offset_right = 416.0
+offset_right = 384.0
 offset_bottom = 248.0
 metadata/_edit_group_ = true
 
@@ -171,11 +250,14 @@ metadata/_edit_group_ = true
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_fpt11")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P32sq4"]
+occluder = SubResource("OccluderPolygon2D_yn1hv")
+
 [node name="P32sq5" type="ColorRect" parent="."]
-offset_left = 288.0
-offset_top = 216.0
-offset_right = 304.0
-offset_bottom = 232.0
+offset_left = 400.0
+offset_top = 272.0
+offset_right = 416.0
+offset_bottom = 288.0
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="P32sq5"]
@@ -184,11 +266,14 @@ metadata/_edit_group_ = true
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_fpt11")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P32sq5"]
+occluder = SubResource("OccluderPolygon2D_q3jgb")
+
 [node name="P32sq6" type="ColorRect" parent="."]
-offset_left = 344.0
-offset_top = 304.0
-offset_right = 360.0
-offset_bottom = 320.0
+offset_left = 576.0
+offset_top = 352.0
+offset_right = 592.0
+offset_bottom = 368.0
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="P32sq6"]
@@ -197,11 +282,15 @@ metadata/_edit_group_ = true
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_fpt11")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P32sq6"]
+occluder = SubResource("OccluderPolygon2D_8nkdp")
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
-[node name="LightSource" parent="." instance=ExtResource("2_m6ggs")]
-position = Vector2(488, 280)
+[node name="RigidBody2D" parent="." instance=ExtResource("4_4krsy")]
+position = Vector2(528, 400)
 
-[node name="PhosphoCube" parent="." instance=ExtResource("3_eckn1")]
-position = Vector2(113, 17)
+[node name="LightSource" parent="." instance=ExtResource("3_ivwls")]
+position = Vector2(120, 432)

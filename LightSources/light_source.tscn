@@ -1,16 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmwujakjog1t7"]
 
-[ext_resource type="Texture2D" uid="uid://c75m4rx1nsw3h" path="res://assets/sprites/light_temp.png" id="1_i24e3"]
 [ext_resource type="Script" path="res://LightSources/light_source.gd" id="1_vgbqu"]
+[ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://Phosphorescents/phosphorescence.tscn" id="2_wnk5r"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2dk45"]
-radius = 40.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hybrr"]
+size = Vector2(16, 16)
 
-[node name="LightSource" type="Area2D" groups=["light_sources"]]
+[node name="LightSource" type="StaticBody2D" groups=["light_sources"]]
 script = ExtResource("1_vgbqu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_2dk45")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -8.0
@@ -19,10 +16,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 color = Color(0.92549, 0.619608, 0.176471, 1)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(0.333333, 0.333333)
-color = Color(1, 0.756863, 0.556863, 1)
-texture = ExtResource("1_i24e3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hybrr")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="Phosphorescence" parent="." instance=ExtResource("2_wnk5r")]

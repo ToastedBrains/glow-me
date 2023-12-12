@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b48887r8w7crl"]
+[gd_scene load_steps=10 format=3 uid="uid://b48887r8w7crl"]
 
 [ext_resource type="Texture2D" uid="uid://dw2yb8tcuaevb" path="res://assets/logos/tb.svg" id="1_7yeiy"]
 [ext_resource type="Texture2D" uid="uid://hphmbuvs3rcm" path="res://assets/logos/gwj.svg" id="1_kan8b"]
+[ext_resource type="Script" path="res://src/credits/opening_credits.gd" id="1_vf5jp"]
 [ext_resource type="Texture2D" uid="uid://djkkcna7x1qv2" path="res://assets/sprites/cards/front_bif.png" id="2_ag21x"]
 [ext_resource type="Texture2D" uid="uid://bkyblffn4j8hk" path="res://assets/sprites/cards/front_tew.png" id="3_eqgtg"]
 [ext_resource type="Texture2D" uid="uid://dka4rsi3asefw" path="res://assets/sprites/cards/front_wofo.png" id="4_bfidy"]
@@ -218,6 +219,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vf5jp")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -278,7 +280,11 @@ texture = ExtResource("4_bfidy")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="CreditsAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_km7wo")
 }
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="animation_finished" from="CreditsAnimation" to="." method="_on_credits_animation_animation_finished"]
+[connection signal="animation_started" from="CreditsAnimation" to="." method="_on_credits_animation_animation_started"]

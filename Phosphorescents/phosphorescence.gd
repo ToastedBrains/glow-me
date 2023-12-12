@@ -6,7 +6,7 @@ var state = INIT
 var energy = 2.0
 var min_energy = 0.5
 var max_energy = 2.0
-var max_load = 2.0
+var max_load = 0.0
 var load_rate = 0.005
 var unload_rate = 0.001
 var min_radius = 1
@@ -23,6 +23,7 @@ func change_state(
 		new_state,
 		source_power : float = 0.0,
 		#source_rate : float = 0.0,
+		#max_load : float = 0.0
 	):
 	if new_state == PERMANENT:
 		energy = max_energy
@@ -33,7 +34,7 @@ func change_state(
 			INIT:
 				energy = min_energy
 			CHARGING:
-				sources.append(source_power)
+				sources.append(source_power / 2)
 				#load_rate += source_rate
 				max_load = sources.max()
 			DISCHARGING:
@@ -56,9 +57,9 @@ func set_energy():
 	$PointLight2D.color = Color(color.r * r, color.g * r, color.b * r, 1)
 		
 	if state == CHARGING:
-		energy = clamp(energy + load_rate, min_energy, max_energy)
+		energy = clamp(energy + load_rate, min_energy, max_load)
 		$PointLight2D.energy = energy
-		$PointLight2D.texture_scale = clamp($PointLight2D.texture_scale + $PointLight2D.texture_scale * load_rate, min_radius, max_energy)
+		$PointLight2D.texture_scale = clamp($PointLight2D.texture_scale + $PointLight2D.texture_scale * load_rate, min_radius, max_load)
 		$Halo/CollisionShape2D.set_scale(Vector2(energy, energy))
 
 func emit():
@@ -102,7 +103,7 @@ func _on_halo_body_entered(body):
 
 func _on_halo_body_exited(body):
 	#print("exit")
-	if (body is CharacterBody2D or body is RigidBody2D) and body.has_node("Phosphorescence"):
+	if body.is_in_group("phosphorescents"):
 		var phosphorescent = body.get_node("Phosphorescence")
 		if id != phosphorescent.id:
 			phosphorescent.change_state(2, energy)

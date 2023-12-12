@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb0j6v8shsd03"]
+[gd_scene load_steps=4 format=3 uid="uid://cb0j6v8shsd03"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_vd73t"]
-[ext_resource type="Texture2D" uid="uid://c75m4rx1nsw3h" path="res://assets/sprites/light_temp.png" id="2_py3su"]
 [ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://Phosphorescents/phosphorescence.tscn" id="3_v5kig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p3duk"]
 size = Vector2(24, 24)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1fvnt"]
-radius = 121.004
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_vd73t")
@@ -18,18 +14,8 @@ offset_left = -12.0
 offset_top = -12.0
 offset_right = 12.0
 offset_bottom = 12.0
-color = Color(0.14902, 0.941176, 0.486275, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p3duk")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-shadow_enabled = true
-texture = ExtResource("2_py3su")
-
-[node name="Halo" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Halo"]
-shape = SubResource("CircleShape2D_1fvnt")
 
 [node name="Phosphorescence" parent="." instance=ExtResource("3_v5kig")]

@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var speed = 300.0
 @export var jump_velocity = -400.0
 
+func _ready():
+	$Phosphorescence.load_rate = 0.007
 
 func _physics_process(delta):
 	if not is_on_floor():

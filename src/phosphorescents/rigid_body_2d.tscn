@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c888flckfoxan"]
 
-[ext_resource type="Script" path="res://Phosphorescents/rigid_body_2d.gd" id="1_awal7"]
-[ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://Phosphorescents/phosphorescence.tscn" id="1_qrujn"]
+[ext_resource type="Script" path="res://src/phosphorescents/rigid_body_2d.gd" id="1_awal7"]
+[ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://src/phosphorescents/phosphorescence.tscn" id="1_qrujn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft0lh"]
 size = Vector2(32, 32)

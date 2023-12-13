@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Glow-me"
+run/main_scene="res://levels/level1/level_1.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

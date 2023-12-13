@@ -4,6 +4,11 @@ extends Control
 func showMenuMain():
 	%MenuTitle.set_text("Glow-ME")
 
+	if Vars.CurrentGameState == Vars.GameState.PAUSED:
+		%Resume.show()
+	else:
+		%Resume.hide()
+
 	%MenuMain.show()
 	%MenuOptions.hide()
 

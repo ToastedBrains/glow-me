@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8uwijdmfacbs"]
+[gd_scene load_steps=21 format=3 uid="uid://b8uwijdmfacbs"]
 
 [ext_resource type="PackedScene" uid="uid://cb0j6v8shsd03" path="res://Player/player.tscn" id="1_snwly"]
 [ext_resource type="PackedScene" uid="uid://cmwujakjog1t7" path="res://LightSources/light_source.tscn" id="3_ivwls"]
@@ -34,6 +34,12 @@ polygon = PackedVector2Array(16, 0, 16, 16, 0, 16, 0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mm7m3"]
 size = Vector2(720, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mtee"]
+size = Vector2(40, 8.00015)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cdyvi"]
+polygon = PackedVector2Array(3.05176e-05, 8, 0, 0, 40, -0.000152588, 40, 7.99985)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mpdoy"]
 polygon = PackedVector2Array(128, 0, 128, 8, 0, 8, 0, 0)
 
@@ -61,6 +67,9 @@ position = Vector2(56, 32)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("4_4krsy")]
 position = Vector2(496, 456)
+
+[node name="RigidBody2D2" parent="." instance=ExtResource("4_4krsy")]
+position = Vector2(592, 456)
 
 [node name="LightSource" parent="." instance=ExtResource("3_ivwls")]
 position = Vector2(120, 464)
@@ -189,18 +198,21 @@ position = Vector2(360, 4)
 shape = SubResource("RectangleShape2D_mm7m3")
 
 [node name="P69" type="ColorRect" parent="."]
-offset_left = 576.0
-offset_top = 424.0
-offset_right = 1296.0
-offset_bottom = 432.0
+offset_left = 200.0
+offset_top = 432.0
+offset_right = 241.0
+offset_bottom = 440.0
 rotation = 1.5708
 metadata/_edit_group_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="P69"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P69/StaticBody2D"]
-position = Vector2(360, 4)
-shape = SubResource("RectangleShape2D_mm7m3")
+position = Vector2(20, 3.99992)
+shape = SubResource("RectangleShape2D_8mtee")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="P69"]
+occluder = SubResource("OccluderPolygon2D_cdyvi")
 
 [node name="P68" type="ColorRect" parent="."]
 offset_left = 8.0

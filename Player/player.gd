@@ -5,7 +5,17 @@ extends CharacterBody2D
 @export var speed = 300.0
 @export var jump_velocity = -400.0
 
+#func test_while():
+	#print("start")
+	#var i = 0
+	#while i < 10:
+		#print(i)
+		#if i == 3:
+			#return
+		#i += 1
+		
 func _ready():
+	#test_while()
 	$Phosphorescence.load_rate = 0.007
 
 func _physics_process(delta):

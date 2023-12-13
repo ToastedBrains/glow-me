@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://t11l2j1r1tre"]
 
-[ext_resource type="Script" path="res://Phosphorescents/phosphorescence.gd" id="1_g7b88"]
-[ext_resource type="Texture2D" uid="uid://c22irmr26nnsg" path="res://assets/sprites/light2_temp.png" id="2_t3qvn"]
+[ext_resource type="Script" path="res://src/phosphorescents/phosphorescence.gd" id="1_g7b88"]
+[ext_resource type="Texture2D" uid="uid://c22irmr26nnsg" path="res://assets/sprites/lights/light2_temp.png" id="2_t3qvn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2xy7"]
 radius = 120.266

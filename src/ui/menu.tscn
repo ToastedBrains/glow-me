@@ -1,0 +1,171 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1jwvywi6veov"]
+
+[ext_resource type="Script" path="res://src/ui/menu.gd" id="1_rrsdk"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rrsdk")
+
+[node name="MenuContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -37.0
+offset_right = 60.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuMargin" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="MenuContent" type="VBoxContainer" parent="MenuContainer/MenuMargin"]
+layout_mode = 2
+
+[node name="MenuTitle" type="Label" parent="MenuContainer/MenuMargin/MenuContent"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Glow-me"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="HSeparator" parent="MenuContainer/MenuMargin/MenuContent"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MenuMain" type="VBoxContainer" parent="MenuContainer/MenuMargin/MenuContent"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuMain"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="NewGame" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuMain"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Game"
+
+[node name="Options" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuMain"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuMain"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="MenuOptions" type="VBoxContainer" parent="MenuContainer/MenuMargin/MenuContent"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OptionAudioTitle" type="Label" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="OptionAudio" type="HBoxContainer" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Volume" type="Label" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/OptionAudio"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeValue" type="HSlider" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/OptionAudio"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="Spacer" type="HSeparator" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="OptionsControls" type="Label" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="MoveRight" type="Label" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer"]
+layout_mode = 2
+text = "Move right"
+
+[node name="MoveRightValue" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoveLeft" type="Label" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer"]
+layout_mode = 2
+text = "Move left"
+
+[node name="MoveLeftValue" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Jump" type="Label" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer"]
+layout_mode = 2
+text = "Jump"
+
+[node name="JumpValue" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Interacting" type="Label" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer"]
+layout_mode = 2
+text = "Interacting"
+
+[node name="InteractingValue" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer2" type="HSeparator" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="OptionsQuit" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuOptions"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/OptionAudio/VolumeValue" to="." method="_on_volume_value_value_changed"]
+[connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer/MoveRightValue" to="." method="_on_move_right_value_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer/MoveLeftValue" to="." method="_on_move_left_value_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer/JumpValue" to="." method="_on_jump_value_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer/InteractingValue" to="." method="_on_interacting_value_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/OptionsQuit" to="." method="_on_options_quit_pressed"]

@@ -44,10 +44,9 @@ func _on_quit_pressed():
 	# exit the game when the quit button is pressed
 	get_tree().quit(0)
 
-# MenuOptions
-func _on_volume_value_value_changed(value):
-	Debug.print("Volume: " + str(value))
-	pass # Replace with function body.
+func _on_volume_value_drag_ended(_value_changed):
+	var volume = %VolumeValue.get_value()
+	Debug.print("Volume set to " + str(volume))
 
 func _on_move_right_value_pressed():
 	pass # Replace with function body.

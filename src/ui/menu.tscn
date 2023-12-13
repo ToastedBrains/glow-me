@@ -163,7 +163,7 @@ text = "Close"
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/Quit" to="." method="_on_quit_pressed"]
-[connection signal="value_changed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/OptionAudio/VolumeValue" to="." method="_on_volume_value_value_changed"]
+[connection signal="drag_ended" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/OptionAudio/VolumeValue" to="." method="_on_volume_value_drag_ended"]
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer/MoveRightValue" to="." method="_on_move_right_value_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer/MoveLeftValue" to="." method="_on_move_left_value_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer/JumpValue" to="." method="_on_jump_value_pressed"]

@@ -8,7 +8,7 @@ extends Node
 # 4 - game over
 # 5 - pause menu
 # 6 - ending credits
-enum GameState {INIT, OPENING, MAIN_MENU, CINEMATIC, GAME, GAME_OVER, PAUSE, ENDING}
+enum GameState {INIT, OPENING, MAIN_MENU, CINEMATIC, GAME, GAME_OVER, PAUSED, ENDING}
 
 # current game state
 var CurrentGameState: GameState

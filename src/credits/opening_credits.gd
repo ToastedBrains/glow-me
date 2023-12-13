@@ -14,4 +14,3 @@ func _on_credits_animation_animation_finished(anim_name):
 
 func _on_credits_animation_animation_started(anim_name):
 	Debug.print("Animation started: " + anim_name)
-	emit_signal("credits_started")

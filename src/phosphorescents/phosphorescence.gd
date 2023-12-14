@@ -1,7 +1,7 @@
 extends Node2D
 
 var permanent = false
-var energy = 5.0
+var energy = 4.0
 var energy_left = 1.0 # percent
 var load_rate = 0.003
 var unload_rate = 0.001 # percent
@@ -14,8 +14,9 @@ var tracked_objects : Array[Node2D]
 
 func logV():
 	$Label.show()
-	$Label.text = "energy = {energy}\nenergy_left = {energy_left}%\nradius = {radius}\nsources = {sources}\ncharge = {illuminated}".format({
+	$Label.text = "color = {color}\nenergy = {energy}\nenergy_left = {energy_left}%\nradius = {radius}\nsources = {sources}\ncharge = {illuminated}".format({
 		"energy": energy,
+		"color": color,
 		"energy_left": "%3.3f" % energy_left,
 		"radius": $Halo/CollisionShape2D.scale,
 		"sources": sources,
@@ -83,6 +84,7 @@ func _ready():
 			clamp(energy_left * energy, 0.25 * energy, 1.0 * energy),
 			clamp(energy_left * energy, 0.25 * energy, 1.0 * energy)),
 		)
+	await get_tree().create_timer(0.01).timeout
 	$PointLight2D.color = Color(
 				color.r * clamp(energy_left, 0.1, 1.0),
 				color.g * clamp(energy_left, 0.1, 1.0),
@@ -100,7 +102,7 @@ func _process(_delta):
 			if sources[s] > max_energy:
 				max_energy = sources[s]
 		energy_left = clamp(energy_left + load_rate, 0.0, max_energy)
-	#logV()
+	logV()
 
 
 func _physics_process(delta):

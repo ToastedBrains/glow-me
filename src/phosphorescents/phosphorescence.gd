@@ -12,6 +12,7 @@ var id : int
 var illuminated = false
 var tracked_objects : Array[Node2D]
 
+
 func logV():
 	$Label.show()
 	$Label.text = "color = {color}\nenergy = {energy}\nenergy_left = {energy_left}%\nradius = {radius}\nsources = {sources}\ncharge = {illuminated}".format({
@@ -102,7 +103,7 @@ func _process(_delta):
 			if sources[s] > max_energy:
 				max_energy = sources[s]
 		energy_left = clamp(energy_left + load_rate, 0.0, max_energy)
-	logV()
+	#logV()
 
 
 func _physics_process(delta):

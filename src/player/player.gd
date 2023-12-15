@@ -19,6 +19,7 @@ func idle_mode():
 		idle = LOAD
 	else:
 		idle = IDLE
+
 		
 func shuffle_idle():
 	var joke = randi_range(1, 6)

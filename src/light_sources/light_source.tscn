@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmwujakjog1t7"]
+[gd_scene load_steps=4 format=3 uid="uid://cmwujakjog1t7"]
 
 [ext_resource type="Script" path="res://src/light_sources/light_source.gd" id="1_vgbqu"]
 [ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://src/phosphorescents/phosphorescence.tscn" id="2_wnk5r"]
-[ext_resource type="Texture2D" uid="uid://ctn1y26h7x3ih" path="res://assets/sprites/player/run_face_4.png" id="3_ojnr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hybrr"]
 size = Vector2(16, 16)
@@ -19,8 +18,5 @@ offset_bottom = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hybrr")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_ojnr0")
 
 [node name="Phosphorescence" parent="." instance=ExtResource("2_wnk5r")]

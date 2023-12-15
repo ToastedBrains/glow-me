@@ -108,7 +108,7 @@ func _process(_delta):
 
 func _physics_process(delta):
 	if len(tracked_objects) > 0:
-		Debug.print("bodies: {v}".format({ "v": len(tracked_objects)}))
+		#Debug.print("bodies: {v}".format({ "v": len(tracked_objects)}))
 		for node in tracked_objects:
 			var phosphorescent = node.get_node("Phosphorescence")
 			if is_in_sight(node):

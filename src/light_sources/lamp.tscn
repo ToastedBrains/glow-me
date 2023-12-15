@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd6ap5yupeorx"]
+[gd_scene load_steps=5 format=3 uid="uid://bd6ap5yupeorx"]
 
-[ext_resource type="Script" path="res://src/light_sources/lamp.gd" id="1_qscap"]
 [ext_resource type="PackedScene" uid="uid://cmwujakjog1t7" path="res://src/light_sources/light_source.tscn" id="2_mwc0o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhqtn"]
@@ -13,7 +12,6 @@ size = Vector2(40, 8)
 polygon = PackedVector2Array(-8, 0, 0, 40, 8, 8, 32, 8, 40, 40, 48, 0)
 
 [node name="Lamp" type="Node2D" groups=["lamps"]]
-script = ExtResource("1_qscap")
 
 [node name="Part1" type="RigidBody2D" parent="."]
 freeze = true

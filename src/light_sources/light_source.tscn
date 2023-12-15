@@ -21,6 +21,7 @@ offset_bottom = 8.0
 shape = SubResource("RectangleShape2D_hybrr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_ojnr0")
 
 [node name="Phosphorescence" parent="." instance=ExtResource("2_wnk5r")]

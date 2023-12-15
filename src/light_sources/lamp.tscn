@@ -1,0 +1,170 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd6ap5yupeorx"]
+
+[ext_resource type="Script" path="res://src/light_sources/lamp.gd" id="1_qscap"]
+[ext_resource type="PackedScene" uid="uid://cmwujakjog1t7" path="res://src/light_sources/light_source.tscn" id="2_mwc0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhqtn"]
+size = Vector2(8, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvsuh"]
+size = Vector2(40, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wkgw2"]
+polygon = PackedVector2Array(-8, 0, 0, 40, 8, 8, 32, 8, 40, 40, 48, 0)
+
+[node name="Lamp" type="Node2D" groups=["lamps"]]
+script = ExtResource("1_qscap")
+
+[node name="Part1" type="RigidBody2D" parent="."]
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Part1"]
+offset_right = 8.0
+offset_bottom = 24.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Part1"]
+position = Vector2(4, 12)
+shape = SubResource("RectangleShape2D_bhqtn")
+
+[node name="Part2" type="RigidBody2D" parent="."]
+position = Vector2(0, 16)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Part2"]
+offset_right = 8.0
+offset_bottom = 24.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Part2"]
+position = Vector2(4, 12)
+shape = SubResource("RectangleShape2D_bhqtn")
+
+[node name="Part3" type="RigidBody2D" parent="."]
+position = Vector2(0, 32)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Part3"]
+offset_right = 8.0
+offset_bottom = 24.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Part3"]
+position = Vector2(4, 12)
+shape = SubResource("RectangleShape2D_bhqtn")
+
+[node name="Part4" type="RigidBody2D" parent="."]
+position = Vector2(0, 48)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Part4"]
+offset_right = 8.0
+offset_bottom = 24.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Part4"]
+position = Vector2(4, 12)
+shape = SubResource("RectangleShape2D_bhqtn")
+
+[node name="Part5" type="RigidBody2D" parent="."]
+position = Vector2(0, 64)
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Part5"]
+offset_right = 8.0
+offset_bottom = 24.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Part5"]
+position = Vector2(4, 12)
+shape = SubResource("RectangleShape2D_bhqtn")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(-16, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(20, -4)
+shape = SubResource("RectangleShape2D_gvsuh")
+
+[node name="ColorRect" type="ColorRect" parent="RigidBody2D"]
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 32.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="RigidBody2D"]
+offset_right = 16.0
+offset_bottom = 8.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="RigidBody2D"]
+offset_left = 24.0
+offset_right = 40.0
+offset_bottom = 8.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="RigidBody2D"]
+offset_left = -8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 16.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="RigidBody2D"]
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 16.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="RigidBody2D"]
+offset_left = -8.0
+offset_top = 16.0
+offset_bottom = 32.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="RigidBody2D"]
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 32.0
+color = Color(0, 0, 0, 1)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="RigidBody2D"]
+position = Vector2(0, -8)
+occluder = SubResource("OccluderPolygon2D_wkgw2")
+
+[node name="LightSource" parent="RigidBody2D" instance=ExtResource("2_mwc0o")]
+position = Vector2(20, 11)
+
+[node name="Joint1" type="PinJoint2D" parent="."]
+visible = false
+position = Vector2(4, 16)
+node_a = NodePath("../Part1")
+node_b = NodePath("../Part2")
+
+[node name="Joint2" type="PinJoint2D" parent="."]
+visible = false
+position = Vector2(4, 32)
+node_a = NodePath("../Part2")
+node_b = NodePath("../Part3")
+
+[node name="Joint3" type="PinJoint2D" parent="."]
+visible = false
+position = Vector2(4, 48)
+node_a = NodePath("../Part3")
+node_b = NodePath("../Part4")
+
+[node name="Joint4" type="PinJoint2D" parent="."]
+visible = false
+position = Vector2(4, 64)
+node_a = NodePath("../Part4")
+node_b = NodePath("../Part5")
+
+[node name="Joint5" type="DampedSpringJoint2D" parent="."]
+position = Vector2(4, 50)
+node_a = NodePath("../Part5")
+node_b = NodePath("../RigidBody2D")
+length = 24.0
+stiffness = 64.0

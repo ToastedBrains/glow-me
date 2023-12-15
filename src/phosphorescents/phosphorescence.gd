@@ -1,27 +1,42 @@
 extends Node2D
 
 var permanent = false
-var energy = 4.0
-var energy_left = 1.0 # percent
+var energy = 2.0
+var energy_left = 0.0 # percent
 var load_rate = 0.003
 var unload_rate = 0.001 # percent
 var color = Color(0.243, 0.984, 0.694, 1)
 var sources : Dictionary
 var id : int
 
-var illuminated = false
+var has_emitted = false
 var tracked_objects : Array[Node2D]
 
 
+func set_permanent():
+	permanent = true
+	energy_left = 1.0
+	color = Color(1, 1, 0, 1)
+	$PointLight2D.texture_scale = clamp(energy_left * energy, 0.25 * energy, 1.0 * energy)
+	$Halo/CollisionShape2D.set_scale(Vector2(
+			clamp(energy_left * energy, 0.25 * energy, 1.0 * energy),
+			clamp(energy_left * energy, 0.25 * energy, 1.0 * energy)),
+		)
+	$PointLight2D.color = Color(
+			color.r * clamp(energy_left, 0.1, 1.0),
+			color.g * clamp(energy_left, 0.1, 1.0),
+			color.b * clamp(energy_left, 0.1, 1.0),
+			1,
+		)
+
 func logV():
 	$Label.show()
-	$Label.text = "color = {color}\nenergy = {energy}\nenergy_left = {energy_left}%\nradius = {radius}\nsources = {sources}\ncharge = {illuminated}".format({
+	$Label.text = "color = {color}\nenergy = {energy}\nenergy_left = {energy_left}%\nradius = {radius}\nsources = {sources}".format({
 		"energy": energy,
 		"color": color,
 		"energy_left": "%3.3f" % energy_left,
 		"radius": $Halo/CollisionShape2D.scale,
 		"sources": sources,
-		"illuminated": illuminated,
 		})
 
 
@@ -57,16 +72,18 @@ func emit():
 			color.b * clamp(energy_left, 0.1, 1.0),
 			1,
 		)
-
+	has_emitted = true
+	
 
 func _on_halo_body_entered(body):
 	if body.is_in_group("phosphorescents"):
 		var phosphorescent = body.get_node("Phosphorescence")
+		#if id != phosphorescent.id:
+			#if energy_left * energy > phosphorescent.energy_left * phosphorescent.energy:
+				#tracked_objects.append(body)
+				#phosphorescent.sources[id] = clamp((energy_left * energy + phosphorescent.energy_left * phosphorescent.energy) / 2 / phosphorescent.energy, 0.0, 1.0)
 		if id != phosphorescent.id:
-			if energy_left * energy > phosphorescent.energy_left * phosphorescent.energy:
-				tracked_objects.append(body)
-				phosphorescent.sources[id] = clamp((energy_left * energy + phosphorescent.energy_left * phosphorescent.energy) / 2 / phosphorescent.energy, 0.0, 1.0)
-
+			tracked_objects.append(body)
 
 func _on_halo_body_exited(body):
 	if body.is_in_group("phosphorescents"):
@@ -95,8 +112,16 @@ func _ready():
 
 
 func _process(_delta):
+	
 	if not permanent:
-		emit()
+		var is_player = get_parent() is CharacterBody2D
+		if has_emitted and energy_left >= 1.0 and not is_player:
+			Debug.print("full")
+			#permanent = true
+			set_permanent()
+		else:
+			emit()
+		
 	if len(sources) > 0:
 		var max_energy = 0.0
 		for s in sources:

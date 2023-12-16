@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bsam6lw3hekao"]
+[gd_scene load_steps=19 format=3 uid="uid://bsam6lw3hekao"]
 
 [ext_resource type="Texture2D" uid="uid://cjna50esor6gv" path="res://assets/sprites/tiles/tiles.png" id="1_nfqnx"]
 
@@ -43,6 +43,9 @@ polygon = PackedVector2Array(8, -12, 12, -12, 12, 12, 8, 12)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2at6b"]
 polygon = PackedVector2Array(-10, -6.5, 10, -6.5, 10, 5, -10, 5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bk5um"]
+polygon = PackedVector2Array(-12, -12, 12, -12, 12, -9, -12, -9)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7cfc"]
 texture = ExtResource("1_nfqnx")
@@ -114,6 +117,7 @@ texture_region_size = Vector2i(24, 24)
 7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:1/0/physics_layer_0/angular_velocity = 0.0
 9:1/0 = 0
+9:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_bk5um")
 9:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:1/0/physics_layer_0/angular_velocity = 0.0
 0:2/0 = 0

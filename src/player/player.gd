@@ -43,8 +43,12 @@ func set_animation():
 			$AnimatedSprite2D.animation = "idle_low"
 		RUN:
 			$AnimatedSprite2D.animation = "run"
+			if not $StepsSound.playing:
+				$StepsSound.play()
 		JUMP:
 			$AnimatedSprite2D.animation = "jump"
+			if not $JumpSound.playing:
+				$JumpSound.play()
 		LOAD:
 			$AnimatedSprite2D.animation = "load"
 		PEE:

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://doaaa6dtmftvc"]
+[gd_scene load_steps=8 format=3 uid="uid://doaaa6dtmftvc"]
 
 [ext_resource type="Script" path="res://src/levels/level_test/level_test.gd" id="1_db2ce"]
 [ext_resource type="PackedScene" uid="uid://cb0j6v8shsd03" path="res://src/player/player.tscn" id="2_t68i8"]
 [ext_resource type="PackedScene" uid="uid://bd6ap5yupeorx" path="res://src/items/lamp.tscn" id="3_dlo0i"]
 [ext_resource type="PackedScene" uid="uid://c888flckfoxan" path="res://src/phosphorescents/rigid_body_2d.tscn" id="5_peisi"]
 [ext_resource type="PackedScene" uid="uid://dgrb7nf2vffa" path="res://src/items/mac_guffin.tscn" id="6_qpmsr"]
+[ext_resource type="PackedScene" uid="uid://m5mq8s0rddw3" path="res://src/ui/in_game_texts/in_game_text.tscn" id="7_vh6nd"]
 [ext_resource type="PackedScene" uid="uid://bsam6lw3hekao" path="res://src/levels/tiles/tiles.tscn" id="7_wca6w"]
 
 [node name="LevelTest" type="Node"]
@@ -29,7 +30,7 @@ layer_1/name = "backgound"
 layer_2/z_index = 2
 
 [node name="Player" parent="." instance=ExtResource("2_t68i8")]
-position = Vector2(198, -167)
+position = Vector2(13, 80)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
@@ -41,6 +42,7 @@ position = Vector2(685, 24)
 position = Vector2(305, 130)
 
 [node name="RigidBody2D2" parent="." instance=ExtResource("5_peisi")]
+visible = false
 position = Vector2(122, 115)
 
 [node name="RigidBody2D3" parent="." instance=ExtResource("5_peisi")]
@@ -48,3 +50,11 @@ position = Vector2(484, 222)
 
 [node name="MacGuffin" parent="." instance=ExtResource("6_qpmsr")]
 position = Vector2(985, 216)
+
+[node name="InGameText" parent="." instance=ExtResource("7_vh6nd")]
+position = Vector2(39, 13)
+text = "Use ←/→, Q/D or X/X  to move"
+
+[node name="InGameText2" parent="." instance=ExtResource("7_vh6nd")]
+position = Vector2(199, 14)
+text = "Use [Spacebar] for jump"

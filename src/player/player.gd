@@ -12,6 +12,8 @@ var idle = IDLE
 var low_battery = false
 var charging = false
 
+var can_play_jump_sound = true
+
 func idle_mode():
 	if low_battery:
 		return IDLE_LOW
@@ -22,17 +24,21 @@ func idle_mode():
 
 		
 func shuffle_idle():
-	var joke = randi_range(1, 6)
-	if joke >= 3:
+	var joke = randi_range(1, 23)
+	if joke == 7:
 		idle = PEE
 		await get_tree().create_timer(2).timeout
 		idle = idle_mode()
-	elif joke <= 2:
+	elif joke == 13:
 		idle = THROW_UP
 		await get_tree().create_timer(2).timeout
 		idle = idle_mode()
+	elif joke == 17:
+		idle = SLEEP
+		await get_tree().create_timer(2).timeout
+		idle = idle_mode()
 	else:
-		idle = IDLE
+		idle = idle_mode()
 	Debug.print([idle])
 	
 
@@ -46,18 +52,29 @@ func set_animation():
 			$AnimatedSprite2D.animation = "run"
 			if not $StepsSound.playing:
 				$StepsSound.play()
+				
 		JUMP:
 			$AnimatedSprite2D.animation = "jump"
-			if not $JumpSound.playing:
+			if not $JumpSound.playing and can_play_jump_sound:
+				can_play_jump_sound = false
 				$JumpSound.play()
+				
 		LOAD:
 			$AnimatedSprite2D.animation = "load"
+			if not $LoadSound.playing:
+				$LoadSound.play()
 		PEE:
 			$AnimatedSprite2D.animation = "pee"
+			if not $PeeSound.playing:
+				$PeeSound.play()
 		SLEEP:
 			$AnimatedSprite2D.animation = "sleep"
+			if not $SleepSound.playing:
+				$SleepSound.play()
 		THROW_UP:
 			$AnimatedSprite2D.animation = "throw_up"
+			if not $ThrowUpSound.playing:
+				$ThrowUpSound.play()
 
 
 func _ready():
@@ -91,6 +108,8 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		state = JUMP
+	else:
+		can_play_jump_sound = true
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_velocity
 		state = JUMP
@@ -101,3 +120,4 @@ func _physics_process(delta):
 			if collision.get_collider() is RigidBody2D:
 				collision.get_collider().apply_force(collision.get_normal() * -2500)
 	set_animation()
+

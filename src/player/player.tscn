@@ -322,11 +322,15 @@ volume_db = -80.0
 
 [node name="SleepSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_tqtg8")
+volume_db = -15.0
 
 [node name="ThrowUpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_uigw2")
+volume_db = -15.0
 
 [node name="PeeSound" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
 
 [node name="LoadSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_1rjdc")
+volume_db = -15.0

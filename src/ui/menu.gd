@@ -1,5 +1,7 @@
 extends Control
 
+signal start_game
+
 # To show the main menu
 func showMenuMain():
 	%MenuTitle.set_text("Glow-ME")
@@ -51,7 +53,7 @@ func _on_quit_pressed():
 
 func _on_volume_value_drag_ended(_value_changed):
 	var volume = %VolumeValue.get_value()
-	Debug.print("Volume set to " + str(volume))
+	Debug.print(["Volume set to " , str(volume)])
 
 func _on_move_right_value_pressed():
 	pass # Replace with function body.
@@ -67,3 +69,6 @@ func _on_interacting_value_pressed():
 
 func _on_options_quit_pressed():
 	showMenuMain()
+
+func _on_start_button_pressed():
+	emit_signal("start_game")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://co0jnvtb0x0g5"]
+[gd_scene load_steps=5 format=3 uid="uid://co0jnvtb0x0g5"]
 
+[ext_resource type="Script" path="res://src/phosphorescents/ceiling_lamp.gd" id="1_4183i"]
 [ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://src/phosphorescents/phosphorescence.tscn" id="2_imnwx"]
 [ext_resource type="Texture2D" uid="uid://cpx3j0gwgpfhu" path="res://assets/sprites/objects/ceiling_lamp.png" id="2_s60by"]
 
@@ -7,6 +8,7 @@
 radius = 49.0102
 
 [node name="CeilingLamp" type="StaticBody2D"]
+script = ExtResource("1_4183i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2uj63")

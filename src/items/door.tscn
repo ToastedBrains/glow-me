@@ -1,45 +1,81 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwal5decgc8ml"]
+[gd_scene load_steps=11 format=3 uid="uid://cwal5decgc8ml"]
 
+[ext_resource type="Script" path="res://src/items/door.gd" id="1_vegmo"]
 [ext_resource type="Texture2D" uid="uid://c8e5tsi6fcn38" path="res://assets/sprites/objects/door.png" id="1_xuo4c"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uqjxd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmi8v"]
 atlas = ExtResource("1_xuo4c")
 region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_63fj7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rclc"]
+atlas = ExtResource("1_xuo4c")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3h8q"]
 atlas = ExtResource("1_xuo4c")
 region = Rect2(24, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xsg0k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_43l87"]
 atlas = ExtResource("1_xuo4c")
 region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft4b6"]
+atlas = ExtResource("1_xuo4c")
+region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5biqr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uqjxd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_63fj7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xsg0k")
+"texture": SubResource("AtlasTexture_cmi8v")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_8rclc")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_d3h8q")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_43l87")
+}, {
+"duration": 1000.0,
+"texture": SubResource("AtlasTexture_ft4b6")
+}],
+"loop": true,
+"name": &"opening",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lut1"]
 size = Vector2(48, 69)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi8sf"]
+size = Vector2(424, 69)
+
 [node name="Door" type="Area2D"]
+script = ExtResource("1_vegmo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5biqr")
+animation = &"opening"
+autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="EndZone" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_8lut1")
+disabled = true
+
+[node name="DetectZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectZone"]
+position = Vector2(137, 1.5)
+shape = SubResource("RectangleShape2D_mi8sf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="DetectZone" to="." method="_on_detect_zone_body_entered"]

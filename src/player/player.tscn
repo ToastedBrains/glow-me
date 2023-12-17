@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cb0j6v8shsd03"]
+[gd_scene load_steps=49 format=3 uid="uid://cb0j6v8shsd03"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_vd73t"]
 [ext_resource type="Texture2D" uid="uid://0ceuh57400x5" path="res://assets/sprites/player/player_idle.png" id="2_w0uy7"]
@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://t5ul0h74rw0o" path="res://assets/sprites/player/player_run.png" id="6_fy6xu"]
 [ext_resource type="Texture2D" uid="uid://do5poiqeuqvsr" path="res://assets/sprites/player/player_sleep.png" id="7_5s4ov"]
 [ext_resource type="Texture2D" uid="uid://uikdek6y8727" path="res://assets/sprites/player/player_throw_up.png" id="8_7dtu0"]
-[ext_resource type="AudioStream" uid="uid://17bwiftuanx1" path="res://assets/sounds/steps.wav" id="11_1htwm"]
-[ext_resource type="AudioStream" uid="uid://cjgu066v37b6o" path="res://assets/sounds/jump.wav" id="12_7ammv"]
+[ext_resource type="AudioStream" uid="uid://c8kkb6iikkxjg" path="res://assets/sounds/player/player_walk.ogg" id="11_ey1sk"]
+[ext_resource type="AudioStream" uid="uid://d0bowubrpubvq" path="res://assets/sounds/player/player_jump.ogg" id="12_svvi3"]
+[ext_resource type="AudioStream" uid="uid://b8txfkfyhh1bd" path="res://assets/sounds/player/player_sleep.ogg" id="13_tqtg8"]
+[ext_resource type="AudioStream" uid="uid://5xk71qa16mvq" path="res://assets/sounds/player/player_throw_up.ogg" id="14_uigw2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejxff"]
 atlas = ExtResource("2_w0uy7")
@@ -309,10 +311,18 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="StepsSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_1htwm")
-volume_db = -10.0
+stream = ExtResource("11_ey1sk")
+volume_db = -24.0
 pitch_scale = 2.4
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_7ammv")
+stream = ExtResource("12_svvi3")
 volume_db = -15.0
+
+[node name="SleepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_tqtg8")
+
+[node name="ThrowUpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_uigw2")
+
+[node name="PeeSound" type="AudioStreamPlayer" parent="."]

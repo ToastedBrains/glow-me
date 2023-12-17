@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://cc0tw4kvqmrrp" path="res://assets/fonts/Anton-Regular.ttf" id="1_5688p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn7fi"]
-size = Vector2(40, 80)
+size = Vector2(112, 80)
 
 [sub_resource type="Animation" id="Animation_hvslw"]
 length = 0.001
@@ -100,7 +100,7 @@ _data = {
 script = ExtResource("1_5asi3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, 40)
+position = Vector2(55, 40)
 shape = SubResource("RectangleShape2D_nn7fi")
 
 [node name="FloatingText" type="Label" parent="."]

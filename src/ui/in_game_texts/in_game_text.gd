@@ -4,6 +4,7 @@ extends Area2D
 
 func set_text(text: String) -> void:
 	$FloatingText.text = text
+	$FloatingText.set_position(Vector2(-$FloatingText.get_combined_minimum_size().x / 2, 0))
 	
 func _ready():
 	set_text(text)

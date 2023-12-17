@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://6lj3g1s5je7j"]
+
+[ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://src/phosphorescents/phosphorescence.tscn" id="1_88o1r"]
+[ext_resource type="Script" path="res://src/phosphorescents/uranium_lamp.gd" id="1_j5cls"]
+[ext_resource type="Texture2D" uid="uid://da3phbciem33" path="res://assets/sprites/objects/uranium.png" id="2_q5i8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyb5v"]
+size = Vector2(13, 20)
+
+[node name="CeilingLamp" type="StaticBody2D"]
+script = ExtResource("1_j5cls")
+permanent = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_gyb5v")
+
+[node name="Phosphorescence" parent="." instance=ExtResource("1_88o1r")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -2)
+texture = ExtResource("2_q5i8u")

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/main.gd" id="1_twyh6"]
 [ext_resource type="PackedScene" uid="uid://b48887r8w7crl" path="res://src/credits/opening_credits.tscn" id="3_l1t7a"]
 [ext_resource type="PackedScene" uid="uid://doaaa6dtmftvc" path="res://src/levels/level_test/level_test.tscn" id="4_80i47"]
-[ext_resource type="PackedScene" uid="uid://c0w1fnc4eafbr" path="res://src/ui/ending.tscn" id="5_1msmd"]
+[ext_resource type="PackedScene" path="res://src/ui/ending.tscn" id="5_1msmd"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_twyh6")
@@ -22,5 +22,4 @@ ok_button_text = "Yeap"
 dialog_text = "Quit game?"
 cancel_button_text = "Nop"
 
-[connection signal="start_game" from="Menu" to="." method="_on_menu_start_game"]
 [connection signal="confirmed" from="QuitConfirm" to="." method="_on_quit_confirm_confirmed"]

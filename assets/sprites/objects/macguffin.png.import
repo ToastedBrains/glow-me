@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byclwfmgr0n3m"
-path="res://.godot/imported/macguffin.png-60af294a1b597c62d2fd24a58283fa55.ctex"
+path="res://.godot/imported/macguffin.png-719defdabd446af634e4c00ea0a24b75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/items/macguffin.png"
-dest_files=["res://.godot/imported/macguffin.png-60af294a1b597c62d2fd24a58283fa55.ctex"]
+source_file="res://assets/sprites/objects/macguffin.png"
+dest_files=["res://.godot/imported/macguffin.png-719defdabd446af634e4c00ea0a24b75.ctex"]
 
 [params]
 

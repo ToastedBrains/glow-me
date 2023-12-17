@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxorqnuprq2fu"]
+[gd_scene load_steps=3 format=3 uid="uid://mjfeac6kjbbs"]
 
 [ext_resource type="Script" path="res://MovingPlateform.gd" id="1_og7yy"]
 [ext_resource type="PackedScene" uid="uid://bsam6lw3hekao" path="res://src/levels/tiles/tiles.tscn" id="2_a4a4i"]
@@ -7,4 +7,4 @@
 script = ExtResource("1_og7yy")
 
 [node name="Tiles" parent="." instance=ExtResource("2_a4a4i")]
-layer_0/tile_data = PackedInt32Array(0, 327680, 2, 1, 393216, 2, 2, 458752, 2)
+layer_0/tile_data = PackedInt32Array(0, 393217, 3, 1, 458753, 3, 2, 524289, 3)

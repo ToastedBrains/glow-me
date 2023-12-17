@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @onready var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var speed = 300.0
+@export var speed = 200.0
 @export var jump_velocity = -400.0
 
 enum {IDLE, IDLE_LOW, RUN, JUMP, LOAD, PEE, SLEEP, THROW_UP}
@@ -60,6 +60,7 @@ func set_animation():
 
 
 func _ready():
+	$Phosphorescence.energy = 2.5
 	$Phosphorescence.load_rate = 0.007
 	
 

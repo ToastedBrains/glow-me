@@ -1,7 +1,7 @@
 extends Node2D
 
+var energy = 1.5
 var permanent = false
-var energy = 2.0
 var energy_left = 0.0 # percent
 var load_rate = 0.003
 var unload_rate = 0.001 # percent
@@ -16,7 +16,7 @@ var tracked_objects : Array[Node2D]
 func set_permanent():
 	permanent = true
 	energy_left = 1.0
-	color = Color(1, 1, 0, 1)
+	color = Color(0, 1, 0, 1)
 	$PointLight2D.texture_scale = clamp(energy_left * energy, 0.25 * energy, 1.0 * energy)
 	$Halo/CollisionShape2D.set_scale(Vector2(
 			clamp(energy_left * energy, 0.25 * energy, 1.0 * energy),
@@ -31,10 +31,10 @@ func set_permanent():
 
 func logV():
 	$Label.show()
-	$Label.text = "color = {color}\nenergy = {energy}\nenergy_left = {energy_left}%\nradius = {radius}\nsources = {sources}".format({
+	$Label.text = "color = {color}\nenergy = {energy}\ne_left = {e_left}%\nradius = {radius}\nsources = {sources}".format({
 		"energy": energy,
 		"color": color,
-		"energy_left": "%3.3f" % energy_left,
+		"e_left": "%3.3f" % energy_left,
 		"radius": $Halo/CollisionShape2D.scale,
 		"sources": sources,
 		})
@@ -116,7 +116,7 @@ func _process(_delta):
 	if not permanent:
 		var is_player = get_parent() is CharacterBody2D
 		if has_emitted and energy_left >= 1.0 and not is_player:
-			Debug.print("full")
+			Debug.print(["full"])
 			#permanent = true
 			set_permanent()
 		else:
@@ -128,7 +128,7 @@ func _process(_delta):
 			if sources[s] > max_energy:
 				max_energy = sources[s]
 		energy_left = clamp(energy_left + load_rate, 0.0, max_energy)
-	#logV()
+	#logV( )
 
 
 func _physics_process(delta):

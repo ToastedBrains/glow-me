@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1jwvywi6veov"]
+[gd_scene load_steps=4 format=3 uid="uid://b1jwvywi6veov"]
 
 [ext_resource type="Script" path="res://src/ui/menu.gd" id="1_rrsdk"]
+[ext_resource type="Texture2D" uid="uid://bh2352dmi6ec" path="res://assets/sprites/startscreen_draft.png" id="2_026bk"]
+[ext_resource type="FontFile" uid="uid://d0vh8r8hq2vec" path="res://assets/fonts/Oswald-VariableFont_wght.ttf" id="3_l2ey0"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -54,21 +56,25 @@ layout_mode = 2
 [node name="Resume" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuMain"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Resume"
 
 [node name="NewGame" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuMain"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "New Game"
 
 [node name="Options" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuMain"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Options"
 
 [node name="Quit" type="Button" parent="MenuContainer/MenuMargin/MenuContent/MenuMain"]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Quit"
 
 [node name="MenuOptions" type="VBoxContainer" parent="MenuContainer/MenuMargin/MenuContent"]
@@ -159,6 +165,30 @@ theme_override_constants/separation = 20
 layout_mode = 2
 text = "Close"
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(360, 239.5)
+scale = Vector2(10, 9.97917)
+texture = ExtResource("2_026bk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -147.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_l2ey0")
+theme_override_font_sizes/font_size = 64
+text = "START GAME"
+flat = true
+
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuMain/Options" to="." method="_on_options_pressed"]
@@ -169,3 +199,4 @@ text = "Close"
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer/JumpValue" to="." method="_on_jump_value_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/GridContainer/InteractingValue" to="." method="_on_interacting_value_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuMargin/MenuContent/MenuOptions/OptionsQuit" to="." method="_on_options_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

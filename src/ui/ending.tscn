@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0w1fnc4eafbr"]
+
+[ext_resource type="Texture2D" uid="uid://dx7y2os16hfnl" path="res://assets/sprites/ending_image.png" id="1_6c7jt"]
+[ext_resource type="FontFile" uid="uid://d0vh8r8hq2vec" path="res://assets/fonts/Oswald-VariableFont_wght.ttf" id="2_haibt"]
+[ext_resource type="AudioStream" uid="uid://0jfd255iwn66" path="res://assets/sounds/ending.ogg" id="3_7dgoq"]
+
+[node name="Ending" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(376, 224)
+scale = Vector2(4.83333, 4.83333)
+texture = ExtResource("1_6c7jt")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 64.0
+offset_right = 720.0
+offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("2_haibt")
+theme_override_font_sizes/font_size = 70
+text = "Seriously?"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="."]
+offset_top = 168.0
+offset_right = 720.0
+offset_bottom = 224.0
+theme_override_fonts/font = ExtResource("2_haibt")
+theme_override_font_sizes/font_size = 31
+text = "Did you go out without underwear?"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 400.0
+offset_right = 720.0
+offset_bottom = 448.0
+theme_override_fonts/font = ExtResource("2_haibt")
+theme_override_font_sizes/font_size = 31
+text = "Thanks for playing"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7dgoq")
+autoplay = true

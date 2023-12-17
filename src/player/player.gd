@@ -14,25 +14,26 @@ var charging = false
 
 func idle_mode():
 	if low_battery:
-		idle = IDLE_LOW
+		return IDLE_LOW
 	elif charging:
-		idle = LOAD
+		return LOAD
 	else:
-		idle = IDLE
+		return IDLE
 
 		
 func shuffle_idle():
 	var joke = randi_range(1, 6)
-	if joke == 1:
+	if joke >= 3:
 		idle = PEE
 		await get_tree().create_timer(2).timeout
-		idle_mode()
-	elif joke == 2:
+		idle = idle_mode()
+	elif joke <= 2:
 		idle = THROW_UP
 		await get_tree().create_timer(2).timeout
-		idle_mode()
+		idle = idle_mode()
 	else:
 		idle = IDLE
+	Debug.print([idle])
 	
 
 func set_animation():
@@ -62,7 +63,9 @@ func set_animation():
 func _ready():
 	$Phosphorescence.energy = 2.5
 	$Phosphorescence.load_rate = 0.007
-	
+	$JumpSound.volume_db = -80
+	await get_tree().create_timer(0.5).timeout
+	$JumpSound.volume_db = -15
 
 func _physics_process(delta):
 	if $Phosphorescence.energy_left < 0.5:
@@ -83,7 +86,7 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
-		idle_mode()
+		#idle_mode()
 		state = idle
 	if not is_on_floor():
 		velocity.y += gravity * delta

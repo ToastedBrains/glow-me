@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cb0j6v8shsd03"]
+[gd_scene load_steps=50 format=3 uid="uid://cb0j6v8shsd03"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_vd73t"]
 [ext_resource type="Texture2D" uid="uid://0ceuh57400x5" path="res://assets/sprites/player/player_idle.png" id="2_w0uy7"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://d0bowubrpubvq" path="res://assets/sounds/player/player_jump.ogg" id="12_svvi3"]
 [ext_resource type="AudioStream" uid="uid://b8txfkfyhh1bd" path="res://assets/sounds/player/player_sleep.ogg" id="13_tqtg8"]
 [ext_resource type="AudioStream" uid="uid://5xk71qa16mvq" path="res://assets/sounds/player/player_throw_up.ogg" id="14_uigw2"]
+[ext_resource type="AudioStream" uid="uid://m6a65wleef2b" path="res://assets/sounds/player/player_load.ogg" id="15_1rjdc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejxff"]
 atlas = ExtResource("2_w0uy7")
@@ -317,7 +318,7 @@ pitch_scale = 2.4
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_svvi3")
-volume_db = -15.0
+volume_db = -80.0
 
 [node name="SleepSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_tqtg8")
@@ -326,3 +327,6 @@ stream = ExtResource("13_tqtg8")
 stream = ExtResource("14_uigw2")
 
 [node name="PeeSound" type="AudioStreamPlayer" parent="."]
+
+[node name="LoadSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_1rjdc")

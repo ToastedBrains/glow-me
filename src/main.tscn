@@ -9,6 +9,7 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_twyh6")
 level = ExtResource("4_80i47")
+end_scene = ExtResource("5_1msmd")
 
 [node name="Menu" parent="." instance=ExtResource("1_dpf6v")]
 visible = false
@@ -20,8 +21,6 @@ initial_position = 2
 ok_button_text = "Yeap"
 dialog_text = "Quit game?"
 cancel_button_text = "Nop"
-
-[node name="Ending" parent="." instance=ExtResource("5_1msmd")]
 
 [connection signal="start_game" from="Menu" to="." method="_on_menu_start_game"]
 [connection signal="confirmed" from="QuitConfirm" to="." method="_on_quit_confirm_confirmed"]

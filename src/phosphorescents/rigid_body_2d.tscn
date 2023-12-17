@@ -1,18 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c888flckfoxan"]
+[gd_scene load_steps=4 format=3 uid="uid://c888flckfoxan"]
 
 [ext_resource type="Script" path="res://src/phosphorescents/rigid_body_2d.gd" id="1_awal7"]
 [ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://src/phosphorescents/phosphorescence.tscn" id="1_qrujn"]
+[ext_resource type="Texture2D" uid="uid://da3phbciem33" path="res://assets/sprites/objects/uranium.png" id="3_hk0qa"]
 
 [node name="RigidBody2D" type="RigidBody2D"]
 script = ExtResource("1_awal7")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(10, -16, 16, -10, 16, 10, 10, 16, -10, 16, -16, 10, -16, -10, -10, -16)
+polygon = PackedVector2Array(1, -8, 7, -5, 7, 9, 1, 12, -1, 12, -6, 9, -6, -5, -1, -8)
 
 [node name="Phosphorescence" parent="." instance=ExtResource("1_qrujn")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_hk0qa")

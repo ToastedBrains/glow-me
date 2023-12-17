@@ -1,0 +1,95 @@
+[gd_scene load_steps=15 format=3 uid="uid://dv3f7jgo5nyjo"]
+
+[ext_resource type="Script" path="res://src/items/relay.gd" id="1_5pjyt"]
+[ext_resource type="Texture2D" uid="uid://cw6lij73flhvx" path="res://assets/sprites/objects/lantern.png" id="1_xb5l4"]
+[ext_resource type="Texture2D" uid="uid://crahgl7j0y27q" path="res://assets/sprites/objects/lantern_powered.png" id="2_wyb5m"]
+[ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://src/phosphorescents/phosphorescence.tscn" id="4_dnlex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8yfg"]
+atlas = ExtResource("1_xb5l4")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05w7s"]
+atlas = ExtResource("1_xb5l4")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhfub"]
+atlas = ExtResource("1_xb5l4")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xl03"]
+atlas = ExtResource("1_xb5l4")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j3wi"]
+atlas = ExtResource("2_wyb5m")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arpn5"]
+atlas = ExtResource("2_wyb5m")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s7ch"]
+atlas = ExtResource("2_wyb5m")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbbd4"]
+atlas = ExtResource("2_wyb5m")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_inlsp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8yfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05w7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhfub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xl03")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j3wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arpn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s7ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbbd4")
+}],
+"loop": true,
+"name": &"loaded",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntej2"]
+size = Vector2(6, 21)
+
+[node name="Relay" type="StaticBody2D"]
+script = ExtResource("1_5pjyt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_inlsp")
+animation = &"loaded"
+autoplay = "empty"
+frame_progress = 0.313939
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_ntej2")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Phosphorescence" parent="." instance=ExtResource("4_dnlex")]
+position = Vector2(0, -5)

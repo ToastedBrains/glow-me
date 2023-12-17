@@ -116,7 +116,7 @@ func _process(_delta):
 	if not permanent:
 		var is_player = get_parent() is CharacterBody2D
 		if has_emitted and energy_left >= 1.0 and not is_player:
-			Debug.print("full")
+			Debug.print(["full"])
 			#permanent = true
 			set_permanent()
 		else:

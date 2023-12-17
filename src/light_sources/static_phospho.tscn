@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyxvmymjgolyx"]
+[gd_scene load_steps=5 format=3 uid="uid://cyxvmymjgolyx"]
 
 [ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://src/phosphorescents/phosphorescence.tscn" id="1_4n4xu"]
+[ext_resource type="Script" path="res://src/light_sources/static_phospho.gd" id="1_aa7c7"]
+[ext_resource type="Texture2D" uid="uid://da3phbciem33" path="res://assets/sprites/objects/uranium.png" id="2_ma5ox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vay5f"]
 size = Vector2(8, 8)
 
 [node name="StaticPhospho" type="StaticBody2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+script = ExtResource("1_aa7c7")
+permanent = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 4)
@@ -17,3 +17,6 @@ shape = SubResource("RectangleShape2D_vay5f")
 
 [node name="Phosphorescence" parent="." instance=ExtResource("1_4n4xu")]
 position = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ma5ox")

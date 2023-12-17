@@ -1,18 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq0q3dqejf0hr"]
+[gd_scene load_steps=13 format=3 uid="uid://cq0q3dqejf0hr"]
 
 [ext_resource type="PackedScene" uid="uid://bsam6lw3hekao" path="res://src/levels/tiles/tiles.tscn" id="1_frde2"]
-[ext_resource type="PackedScene" path="res://src/items/door.tscn" id="2_x7thq"]
+[ext_resource type="Script" path="res://src/levels/i_lost_my_keys/ILostMyKeys.gd" id="1_t0bi6"]
+[ext_resource type="PackedScene" uid="uid://cwal5decgc8ml" path="res://src/items/door.tscn" id="2_x7thq"]
 [ext_resource type="PackedScene" uid="uid://cb0j6v8shsd03" path="res://src/player/player.tscn" id="3_yvqom"]
 [ext_resource type="PackedScene" uid="uid://mjfeac6kjbbs" path="res://src/levels/moving_plateform.tscn" id="4_alt6q"]
 [ext_resource type="PackedScene" uid="uid://dgrb7nf2vffa" path="res://src/items/mac_guffin.tscn" id="5_e710l"]
 [ext_resource type="PackedScene" uid="uid://m5mq8s0rddw3" path="res://src/ui/in_game_texts/in_game_text.tscn" id="6_c37rr"]
 [ext_resource type="PackedScene" uid="uid://6lj3g1s5je7j" path="res://src/phosphorescents/uranium_lamp.tscn" id="7_e4cng"]
 [ext_resource type="PackedScene" uid="uid://bab61etgk2h82" path="res://src/phosphorescents/ceiling_lamp.tscn" id="8_bfvt7"]
-[ext_resource type="PackedScene" path="res://src/items/relay.tscn" id="9_o1mi0"]
+[ext_resource type="PackedScene" uid="uid://dv3f7jgo5nyjo" path="res://src/items/relay.tscn" id="9_o1mi0"]
 [ext_resource type="AudioStream" uid="uid://dpmwvaf1d8ww4" path="res://assets/sounds/cave themeb4.ogg" id="10_snl2f"]
 [ext_resource type="AudioStream" uid="uid://dui0fnh4aok8g" path="res://assets/sounds/deep-humidity.ogg" id="11_cvqdg"]
 
 [node name="ILostMyKeys" type="Node2D"]
+script = ExtResource("1_t0bi6")
 metadata/_edit_horizontal_guides_ = [898.0, 885.0, 1080.0]
 metadata/_edit_vertical_guides_ = [1512.0, 1512.0]
 
@@ -176,3 +178,22 @@ autoplay = true
 
 [node name="Ambiance" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("11_cvqdg")
+
+[node name="CeilingLamp" parent="." instance=ExtResource("8_bfvt7")]
+position = Vector2(1000, 104)
+energy = 3.0
+permanent = true
+
+[node name="CeilingLamp2" parent="." instance=ExtResource("8_bfvt7")]
+position = Vector2(440, 680)
+energy = 3.0
+permanent = true
+
+[node name="CeilingLamp3" parent="." instance=ExtResource("8_bfvt7")]
+position = Vector2(816, 584)
+energy = 3.0
+permanent = true
+
+[connection signal="relay_activated" from="Relays/Relay" to="." method="_on_relay_relay_activated"]
+[connection signal="relay_activated" from="Relays/Relay2" to="." method="_on_relay_2_relay_activated"]
+[connection signal="relay_activated" from="Relays/Relay3" to="." method="_on_relay_3_relay_activated"]

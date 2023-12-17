@@ -39,7 +39,7 @@ func shuffle_idle():
 		idle = idle_mode()
 	else:
 		idle = idle_mode()
-	Debug.print([idle])
+	#Debug.print([idle])
 	
 
 func set_animation():

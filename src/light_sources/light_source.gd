@@ -1,10 +1,9 @@
 extends StaticBody2D
 
+@export var energy = 2.0
+@export var permanent = false
 
 func _ready():
-	#$Phosphorescence.energy = 8.0
-	#$Phosphorescence.energy_left = 1.0
-	#$Phosphorescence.color = Color(0.943, 0.284, 0.004, 1)
-	#$Phosphorescence.permanent = true
-	
-	$Phosphorescence.set_permanent()
+	$Phosphorescence.energy = energy
+	if permanent:
+		$Phosphorescence.set_permanent()

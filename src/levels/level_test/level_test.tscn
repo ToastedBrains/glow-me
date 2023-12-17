@@ -87,6 +87,14 @@ text = "Some lights need to provided with energy..."
 position = Vector2(972, -85)
 permanent = true
 
+[node name="LightSource2" parent="." instance=ExtResource("8_7jlqt")]
+position = Vector2(547, 418)
+permanent = true
+
+[node name="LightSource3" parent="." instance=ExtResource("8_7jlqt")]
+position = Vector2(680, 755)
+permanent = true
+
 [node name="StaticPhospho" parent="." instance=ExtResource("9_npyc3")]
 position = Vector2(996, 253)
 
@@ -102,7 +110,13 @@ autoplay = true
 stream = ExtResource("11_f0iex")
 
 [node name="Relay" parent="." instance=ExtResource("12_vntlf")]
-position = Vector2(-57, 441)
+position = Vector2(427, 754)
+
+[node name="Relay2" parent="." instance=ExtResource("12_vntlf")]
+position = Vector2(253, 418)
+
+[node name="Relay3" parent="." instance=ExtResource("12_vntlf")]
+position = Vector2(746, 81)
 
 [node name="Door" parent="." instance=ExtResource("13_4oqvp")]
 position = Vector2(-32, 682)
@@ -112,3 +126,7 @@ position = Vector2(477, 551)
 
 [node name="CeilingLamp" parent="." instance=ExtResource("15_8dt0n")]
 position = Vector2(595, 177)
+
+[connection signal="relay_activated" from="Relay" to="." method="_on_relay_relay_activated"]
+[connection signal="relay_activated" from="Relay2" to="." method="_on_relay_relay_activated"]
+[connection signal="relay_activated" from="Relay3" to="." method="_on_relay_relay_activated"]

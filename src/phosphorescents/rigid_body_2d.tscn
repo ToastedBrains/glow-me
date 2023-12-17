@@ -10,7 +10,7 @@ script = ExtResource("1_awal7")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(1, -8, 7, -5, 7, 9, 1, 12, -1, 12, -6, 9, -6, -5, -1, -8)
 
-[node name="Phosphorescence" parent="." instance=ExtResource("1_qrujn")]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_hk0qa")
+
+[node name="Phosphorescence" parent="." instance=ExtResource("1_qrujn")]

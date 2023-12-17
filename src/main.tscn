@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://cq4johbvbgx3b"]
+[gd_scene load_steps=6 format=3 uid="uid://cq4johbvbgx3b"]
+
+[ext_resource type="PackedScene" uid="uid://b1jwvywi6veov" path="res://src/ui/menu.tscn" id="1_dpf6v"]
+[ext_resource type="Script" path="res://src/main.gd" id="1_twyh6"]
+[ext_resource type="PackedScene" uid="uid://b48887r8w7crl" path="res://src/credits/opening_credits.tscn" id="3_l1t7a"]
+[ext_resource type="PackedScene" uid="uid://doaaa6dtmftvc" path="res://src/levels/level_test/level_test.tscn" id="4_80i47"]
+[ext_resource type="PackedScene" uid="uid://c0w1fnc4eafbr" path="res://src/ui/ending.tscn" id="5_1msmd"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_twyh6")
+level = ExtResource("4_80i47")
+
+[node name="Menu" parent="." instance=ExtResource("1_dpf6v")]
+visible = false
+
+[node name="OpeningCredits" parent="." instance=ExtResource("3_l1t7a")]
+
+[node name="QuitConfirm" type="ConfirmationDialog" parent="."]
+initial_position = 2
+ok_button_text = "Yeap"
+dialog_text = "Quit game?"
+cancel_button_text = "Nop"
+
+[node name="Ending" parent="." instance=ExtResource("5_1msmd")]
+
+[connection signal="start_game" from="Menu" to="." method="_on_menu_start_game"]
+[connection signal="confirmed" from="QuitConfirm" to="." method="_on_quit_confirm_confirmed"]

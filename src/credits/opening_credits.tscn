@@ -221,6 +221,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vf5jp")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 719.0
+offset_bottom = 483.0
+color = Color(0, 0, 0, 1)
+
 [node name="LogosContainer" type="MarginContainer" parent="."]
 clip_contents = true
 layout_mode = 1
@@ -258,6 +264,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CardTEW" type="TextureRect" parent="LogosContainer/LogoCards"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("3_eqgtg")
@@ -265,6 +272,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="CardWofo" type="TextureRect" parent="LogosContainer/LogoCards"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("4_bfidy")

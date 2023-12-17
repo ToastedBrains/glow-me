@@ -197,6 +197,7 @@ sources/0 = SubResource("TileSetAtlasSource_k7cfc")
 [node name="Tiles" type="TileMap"]
 tile_set = SubResource("TileSet_0mxwg")
 rendering_quadrant_size = 24
+collision_animatable = true
 format = 2
 layer_0/name = "backgound"
 layer_1/name = "foreground"

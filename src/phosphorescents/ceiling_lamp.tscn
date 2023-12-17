@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://co0jnvtb0x0g5"]
+
+[ext_resource type="PackedScene" uid="uid://t11l2j1r1tre" path="res://src/phosphorescents/phosphorescence.tscn" id="2_imnwx"]
+[ext_resource type="Texture2D" uid="uid://cpx3j0gwgpfhu" path="res://assets/sprites/objects/ceiling_lamp.png" id="2_s60by"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2uj63"]
+radius = 49.0102
+
+[node name="CeilingLamp" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2uj63")
+
+[node name="Phosphorescence" parent="." instance=ExtResource("2_imnwx")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s60by")

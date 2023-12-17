@@ -1,6 +1,6 @@
 extends Node2D
 
-var energy = 2.0
+var energy = 1.5
 var permanent = false
 var energy_left = 0.0 # percent
 var load_rate = 0.003
